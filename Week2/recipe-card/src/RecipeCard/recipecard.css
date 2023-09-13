@@ -1,0 +1,96 @@
+.card{
+    display: inline-flex;
+    padding: 80px 120px;
+    align-items: center;
+    gap: 60px;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.contents{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.img{
+    width: 700px;
+    height: 1198px;
+    background: url('../assets/wings.png'), lightgray 50% / cover no-repeat;
+    background-position: center 50%;
+    margin-top: 80px;
+}
+
+.title{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    border-bottom: 8px solid var(--Mid-blue, #48B2FF);
+}
+.title-text{
+    height: 70px;
+    color: #000;
+    font-family: Jua;
+    font-size: 120px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.description{
+    width: 1860px;
+    color: #000;
+    font-family: roboto;
+    font-size: 30px;
+    font-style: light;
+    font-weight: 400;
+    line-height: normal;
+    
+}
+
+.instructions-ingredients-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px; 
+}
+
+.ingredients, .instructions{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 72px;
+    max-width: 50%;
+}
+
+.ingredients-title, .instructions-title, .detail-title{
+    width: 466px;
+    height: 77px;
+    color: var(--Mid-blue, #48B2FF);
+    /* Subtitle text */
+    font-family: Jua;
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.ingredients-list, .instructions-list{
+    width: auto;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.ingredients-text, .instructions-text, .detail-text{
+    color: #000;
+    font-family: roboto;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
