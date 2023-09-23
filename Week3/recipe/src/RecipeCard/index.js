@@ -18,8 +18,8 @@ export default function RecipeCard(props) {
           } onClick={onExpand}>
         <RecipeImg imgSrc={recipe.imgSrc} />
         <div className={styles.recipe_wrapper}>
-          <RecipeInfo title={recipe.title} description={recipe.description} />
           <UserRating value={rating} onChange={(value) => setRating(value)} />
+          <RecipeInfo title={recipe.title} description={recipe.description} />
         </div>
       </Card>
 
@@ -27,12 +27,13 @@ export default function RecipeCard(props) {
         <Card className={`${styles.card} ${styles.expanded}`} onClick={onExpand}>
           <RecipeImg imgSrc={recipe.imgSrc} />
           <div className={styles.recipe_wrapper}>
+            <UserRating value={rating} onChange={(value) => setRating(value)} />
             <RecipeInfo title={recipe.title} description={recipe.description} />
             <div className={styles.recipe_details}>
               <IngredientsList ingredients={recipe.ingredients} />
               <InstructionsList instructions={recipe.instructions} />
             </div>
-            <UserRating value={rating} onChange={(value) => setRating(value)} />
+            {/* <UserRating value={rating} onChange={(value) => setRating(value)} /> */}
           </div>
         </Card>
       )}
