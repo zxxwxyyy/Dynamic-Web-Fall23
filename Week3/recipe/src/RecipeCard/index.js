@@ -9,6 +9,7 @@ import styles from './RecipeCard.module.css'
 
 export default function RecipeCard(props) {
   const { recipe, isExpanded, onExpand, expandedCard, index } = props;
+  // State to track the current rating value
   const [rating, setRating] = useState(0)
   return (
     <>
@@ -18,7 +19,8 @@ export default function RecipeCard(props) {
           } onClick={onExpand}>
         <RecipeImg imgSrc={recipe.imgSrc} />
         <div className={styles.recipe_wrapper}>
-          <UserRating value={rating} onChange={(value) => setRating(value)} />
+          {/* Display the star rating on preview(not clickable on the non-expanded card) */}
+          <UserRating value={rating} onChange={(value) => setRating(value)} isClickable = {isExpanded} />
           <RecipeInfo title={recipe.title} description={recipe.description} />
         </div>
       </Card>
@@ -27,7 +29,7 @@ export default function RecipeCard(props) {
         <Card className={`${styles.card} ${styles.expanded}`} onClick={onExpand}>
           <RecipeImg imgSrc={recipe.imgSrc} />
           <div className={styles.recipe_wrapper}>
-            <UserRating value={rating} onChange={(value) => setRating(value)} />
+            <UserRating value={rating} onChange={(value) => setRating(value)} isClickable = {isExpanded} />
             <RecipeInfo title={recipe.title} description={recipe.description} />
             <div className={styles.recipe_details}>
               <IngredientsList ingredients={recipe.ingredients} />

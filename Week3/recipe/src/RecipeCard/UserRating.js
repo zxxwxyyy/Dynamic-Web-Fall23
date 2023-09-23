@@ -9,6 +9,7 @@ export default function UserRating(props) {
   // useState(0) defines the initial count at 0, aka our default state for when the component loads
   const [hoverValue, setHoverValue] = useState(0)
   const { value, onChange } = props
+  // Handle the click event to set the rating value
   const handleClick = (value) => {
       onChange(value)
   }
@@ -22,6 +23,7 @@ export default function UserRating(props) {
           onHover={() => setHoverValue(index)}
           onLeaveHover={() => setHoverValue(0)}
           onClick={() => handleClick(index)}
+          isClickable = {props.isClickable}
         />
       ))}
     </div>

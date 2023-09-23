@@ -5,8 +5,9 @@ import { ReactComponent as EmptyStarIcon } from '@material-design-icons/svg/fill
 import styles from './RecipeCard.module.css'
 
 export default function Star(props) {
-    const { index, value, onHover, onLeaveHover, onClick } = props;
+    const { index, value, onHover, onLeaveHover, onClick, isClickable } = props;
   
+    // Star component for display
     let StarIcon;
     if (value >= index) {
       StarIcon = FullStarIcon;
@@ -21,7 +22,8 @@ export default function Star(props) {
         className={styles.Star}
         onMouseEnter={onHover}
         onMouseLeave={onLeaveHover}
-        onClick={onClick}
+        // Only allow user to click and rate the recipe when it's opened, prevent mis-touch
+        onClick={isClickable ? onClick : null }
         alt="star"
       />
     );
