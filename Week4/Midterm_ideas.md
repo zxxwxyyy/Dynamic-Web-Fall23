@@ -1,6 +1,6 @@
 # Midterm Project ideas:
 
-1.  To-Do List App
+**To-Do List App**
 
 Features: 
 - Task CRUD: User can create, read, update and delete the task. 
@@ -26,7 +26,7 @@ Unknown(Need more research):
 - How to enable notification with React? （Could be a daily email sent every morning）
 - How do I achieve repeating tasks feature? 
 
-2. Recipe Finder App
+**Recipe Finder App**
 
 Features: 
 - Recipe Search: User get to search recipes base on what they have in fridge. 
@@ -45,7 +45,7 @@ const [expandedCard, setExpandedCard] = useState(null);
 ```
 
 
-3. An interface of Image Generation Model - VAHA
+**An interface of Image Generation Model - VAHA**
 
 VAHA is a Image Generate model which generates artwork base on your emotion. 
 
