@@ -34,10 +34,6 @@
 
 To run this repo:
 1. Clone the repo
-2. ```
-cd your_saved_dir
-```
+2. ```cd your_saved_dir```
 3. Start the server
-```
-npm start
-```
+4. ```npm start```
