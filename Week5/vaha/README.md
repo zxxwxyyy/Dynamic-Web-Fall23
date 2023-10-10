@@ -2,10 +2,10 @@
 
 # [VAHA - Visual Artwork For Human Affections](https://github.com/zxxwxyyy/VAHA/) Demo Page
 
-![t2i](./src.assets/1.png)
-![t2i](./src.assets/2.png)
-![t2i](./src.assets/3.png)
-![t2i](./src.assets/4.png)
+![t2i](./src/assets/1.png)
+![t2i](./src/assets/2.png)
+![t2i](./src/assets/3.png)
+![t2i](./src/assets/4.png)
 
 
 ## Features
