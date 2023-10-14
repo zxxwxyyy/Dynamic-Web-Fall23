@@ -1,0 +1,200 @@
+@import '../styles/var.css';
+@import '../styles/global.css';
+
+.nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 91px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  background: var(--c-gray);
+}
+
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 101px;
+  height: 100vh;
+  width: 100vw;
+}
+
+.vaha_title{
+  font-family: var(--ff-roboto-mono);
+  font-weight: var(--fw-regular);
+  text-transform: capitalize;
+  display: inline-flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-left: 76px;
+  color: var(--c-white);
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  background: var(--c-gray);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 1001px;
+  height: 700px;
+  margin-top: 20px;
+}
+
+.logo {
+  position: absolute;
+  right: 46px;
+  width: 29px;
+  height: 29px;
+  
+}
+
+.captureContainer {
+  position: relative;
+  border-radius: 25px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.Button {
+  font-family: var(--ff-roboto-mono);
+  font-weight: var(--fw-regular);
+  height: 51px;
+  bottom: 10px;
+  min-width: 130px;
+  border-radius: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  overflow: hidden; 
+  position: relative;
+  width: auto; 
+  transition: all 0.2s ease; 
+  opacity: 60%;
+
+  display: inline-flex; 
+  align-items: center;
+  justify-content: center;
+  width: 130px; 
+}
+
+.buttonContent {
+  display: inline-flex;
+  align-items: center;
+}
+
+.buttonIcon {
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.buttonText {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: max-width 0.3s ease, opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.Button:hover .buttonText {
+  max-width: 200px;
+  opacity: 1;
+  visibility: visible;
+  padding-left: 10px;
+}
+
+.Button:hover .buttonIcon {
+  transform: translateX(-1px);
+}
+
+.Button:hover {
+  width: auto; 
+  opacity: 100%;
+}
+
+.selfie, .capturedImage {
+  max-width: 837px;
+  max-height: 479px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.faceRectangle {
+  border: 3px solid #4CAF50;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.emotionLabel {
+  color: var(--c-white);
+  font-family: var(--ff-roboto-mono);
+  font-weight: var(--fw-regular);
+  margin-top: 20px;
+  text-align: center;
+}
+
+.webcamContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+@keyframes slowlyBlurOut {
+  0% {
+      filter: blur(20px);
+  }
+  100% {
+      filter: blur(0px);  
+  }
+}
+.blurredSelfie {
+  animation: slowlyBlurOut 7s forwards;
+}
+
+.progressBar {
+  height: 20px;
+  background-color: #4CAF50;
+  transition: width 0.25s ease-in-out;
+  border-radius: 25px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stepper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; 
+}
+
+.icon {
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+  width: 24px; 
+  height: 24px;
+  color: white;
+}
+
+.active {
+  opacity: 1;
+}

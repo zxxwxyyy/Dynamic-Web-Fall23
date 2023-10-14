@@ -1,17 +1,9 @@
-// @flow
 
 import React, { useRef, useState, useEffect } from 'react';
 import Webcam from "react-webcam";
 import styles from './vaha.module.css';
 
-type Props = {
-    onCapture?: (imageSrc: string, emotion: string) => void,
-    capturedImageSrc?: string,
-    currentStep: number,
-    setCurrentStep: (step:number) => void,
-  };
-
-export default function WebcamCapture(props: Props) {
+export default function WebcamCapture(props) {
   // Using useRef to create a reference to Webcam  
   const webcamRef = useRef(null);
   // Using useState to control
@@ -44,6 +36,7 @@ export default function WebcamCapture(props: Props) {
     setEmotion("");
     setLoadingProgress(0);
     setShowProgressBar(false);
+    props.setCurrentStep(1)
   };
 
   // useEffect hook to manage the progress bar and the completion of the progress.
