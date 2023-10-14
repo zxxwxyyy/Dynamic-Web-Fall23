@@ -1,4 +1,4 @@
-# Midterm - 1st update
+# Midterm - 2nd update
 
 # [VAHA - Visual Artwork For Human Affections](https://github.com/zxxwxyyy/VAHA/) Demo Page
 
