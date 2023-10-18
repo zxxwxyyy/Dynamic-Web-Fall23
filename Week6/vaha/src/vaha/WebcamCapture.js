@@ -29,7 +29,7 @@ export default function WebcamCapture(props) {
     // inform the parent component about the captured image
     onCapture && onCapture(imageSrc, randomEmotion); 
     // move the stepper to next step
-    setCurrentStep(2);
+    // setCurrentStep(2);
   }
 
   // if user click on retake
