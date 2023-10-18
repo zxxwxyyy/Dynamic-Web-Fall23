@@ -119,8 +119,6 @@
 }
 
 .selfie, .capturedImage {
-  max-width: 837px;
-  max-height: 479px;
   display: block;
   margin-left: auto;
   margin-right: auto;

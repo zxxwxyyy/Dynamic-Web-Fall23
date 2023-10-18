@@ -91,8 +91,8 @@ export default function WebcamCapture(props) {
                 src={capturedImage} 
                 alt="Captured"
                 className={showProgressBar ? styles.blurredSelfie : styles.selfie}
-                width={837}
-                height={479}
+                width={640}
+                height={480}
               />
               {/* Shows a progress bar that fills up over time */}
               {showProgressBar && (
@@ -138,10 +138,10 @@ export default function WebcamCapture(props) {
             <div className={styles.webcamContainer}> 
               <Webcam
                 audio={false}
-                height={479}
+                height={480}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
-                width={837}
+                width={640}
               />
               <div className={styles.buttonContainer}>
                 <button className={styles.Button} onClick={capture}>
