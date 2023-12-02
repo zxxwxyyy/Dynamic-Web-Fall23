@@ -41,3 +41,22 @@ Using Python's Flask app to serve as the backend. It handles image processing, e
 - `./predict`: Receives images for emotion prediction, returns predicted emotion in json format
 - `./generated_images`: Recieves predicted emotion label and generates correspond artwork based on it. Return the generated images' url in json format. 
 
+## Getting Start
+
+**Front End**
+
+1. Clone the repo
+2. Navigate to the project directory and install react modules
+```bash
+    cd save_dir/vaha
+    npm install
+```
+
+**Back End**
+
+```bash
+    cd save_dir/backend
+    conda env create --file vaha.yml
+    conda activate vaha
+    ...
+```
