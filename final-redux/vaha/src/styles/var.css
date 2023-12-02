@@ -1,0 +1,18 @@
+:root {
+    /* colors */
+    --c-gray: #343B3F;
+    --c-white: #ffffff;
+  
+    /* font weights */
+    --fw-bold: 700;
+    --fw-semibold: 600;
+    --fw-regular: 400;
+    --fw-light: 300;
+  
+    /* font-families */
+    --ff-open-sans: 'Open Sans', sans-serif;
+    --ff-roboto-mono:  'Roboto Mono', sans-serif;
+  
+    /* line-heights */
+  
+  }

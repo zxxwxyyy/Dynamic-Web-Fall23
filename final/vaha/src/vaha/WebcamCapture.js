@@ -17,10 +17,12 @@ export default function WebcamCapture() {
           webcamRef,
           setCurrentStep,
           handleRetake, 
-          handleGeneration} = useContext(cameraContext)
+          handleGeneration,
+          err,
+          handleError} = useContext(cameraContext)
   
   const [faceCoords, setFaceCoords] = useState(null)
-  
+    
   const dataURItoBlob = (dataURI) => {
     const byteString = atob(dataURI.split(',')[1]);
     const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
@@ -32,6 +34,63 @@ export default function WebcamCapture() {
     return new Blob([ab], {type: mimeString});
   }
   
+  
+  const handleImageUpload = async(event) => {
+    const file = event.target.files[0]
+    if (file){
+      const reader = new FileReader()
+      reader.onload = async(e) => {
+        const imageDataUrl = e.target.result;
+        setCapturedImage(imageDataUrl)
+        setShowProgressBar(true)
+        setLoadingProgress(0)
+        let interval
+
+        const formData = new FormData()
+        formData.append('image', dataURItoBlob(imageDataUrl))
+
+        try {
+          let progress = 0;
+          const interval = setInterval(() => {
+            progress += 10;
+            if (progress <= 90) {
+              setLoadingProgress(progress);
+            } else {
+              
+              clearInterval(interval);
+            }
+          }, 100);
+          const response = await fetch('http://localhost:5000/predict', {
+            method: 'POST',
+            body: formData,
+          });
+          clearInterval(interval);
+          setLoadingProgress(100);
+          setShowProgressBar(false);
+    
+          const data = await response.json();
+          // console.log(data.face_coords)
+          if (data.emotion && data.face_coords) {
+            setEmotion(data.emotion);
+            setFaceCoords(data.face_coords);
+          }
+          setCurrentStep(2); 
+          if(response.status === 500) {
+            handleError(true)
+            
+          }
+        } catch (error) {
+          handleError(true)
+          console.error('Error during image prediction:', error);
+          setShowProgressBar(false);
+          clearInterval(interval);
+          setLoadingProgress(0);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
   const capture = async () => {
     const imageSrc = webcamRef.current.getScreenshot();
     setCapturedImage(imageSrc);
@@ -49,7 +108,7 @@ export default function WebcamCapture() {
         if (progress <= 90) {
           setLoadingProgress(progress);
         } else {
-          // Stop at 90% until get a response back
+          
           clearInterval(interval);
         }
       }, 100);
@@ -68,6 +127,9 @@ export default function WebcamCapture() {
         setFaceCoords(data.face_coords);
       }
       setCurrentStep(2); 
+      if(response.status === 500) {
+        handleError(true)
+      }
     } catch (error) {
       console.error('Error during image prediction:', error);
       setShowProgressBar(false);
@@ -123,7 +185,7 @@ export default function WebcamCapture() {
               {/* Displays predicted emotion and retake/generate control once loading completes */}   
               {loadingProgress >= 100 && (
                 <>
-                {/* Displays the randomly selected emotion for the captured face */}
+                  {err && (<div className={styles.errorLabel}>No face detected. Please retake the picture.</div>)}
                   <div className={styles.emotionLabel}>
                     Predicted Emotion: {emotion}
                   </div>
@@ -131,7 +193,7 @@ export default function WebcamCapture() {
                     <button className={styles.Button} onClick={handleRetake}>
                       <div className={styles.buttonContent}>
                         <span className={`material-symbols-outlined ${styles.buttonIcon}`}>
-                          cameraswitch
+                          undo
                         </span>
                         <span className={styles.buttonText}>
                           Retake Photo
@@ -174,6 +236,21 @@ export default function WebcamCapture() {
                     </span>
                   </div>
                 </button>
+                <label htmlFor="fileUpload" className={styles.customFileUploadLabel}>
+                <span className={`material-symbols-outlined ${styles.buttonIcon}`}>
+                  file_upload
+                </span>
+                <span className={styles.buttonText}>Upload Img</span>
+              </label>
+              
+              {/* Hidden file input */}
+              <input 
+                id="fileUpload"
+                type="file" 
+                accept="image/*" 
+                onChange={handleImageUpload} 
+                className={styles.uploadInput} 
+              />
               </div>
             </div>
           )

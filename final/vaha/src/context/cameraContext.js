@@ -5,6 +5,8 @@ const cameraContext = createContext()
 function CamProvider({children, currentStep, setCurrentStep}){
   const webcamRef = useRef(null);
   // Using useState to control
+  // usereducer
+  // use ...[] and copy to update the state like what we did in the beginning of class
   const [capturedImage, setCapturedImage] = useState(null);
   const [emotion, setEmotion] = useState("");
   const [loadingProgress, setLoadingProgress] = useState(0);
@@ -12,7 +14,8 @@ function CamProvider({children, currentStep, setCurrentStep}){
   const [selfieSrc, setSelfieSrc] = useState(null);
   const [startGeneration, setStartGeneration] = useState(false);
   const [generationProgress, setGenerationProgress] = useState(0);
-  const [generatedImage, setGeneratedImage] = useState(null);
+  const [generatedImage, setGeneratedImage] = useState([]);
+  const [err, handleError] = useState(false);
 
   // if user click on retake
   const handleRetake = () => {
@@ -22,6 +25,7 @@ function CamProvider({children, currentStep, setCurrentStep}){
     setShowProgressBar(false);
     setCurrentStep(1)
     setStartGeneration(false)
+    handleError(false)
   };
 
 
@@ -90,7 +94,9 @@ function CamProvider({children, currentStep, setCurrentStep}){
     handleGeneration,
     handleCapture,
     generatedImage,
-    generationProgress
+    generationProgress,
+    err,
+    handleError
 }
   return <cameraContext.Provider value={valueToShare}>{children}</cameraContext.Provider>
 }
