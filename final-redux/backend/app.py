@@ -62,7 +62,6 @@ def generated_images():
         emotion_label = data['emotion']
         num_examples = 3
 
-        # Call your generation function
         image_paths = plot_generated_images_with_predictions(
             'Best_Generator',
             artemis_model,
